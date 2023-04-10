@@ -10,11 +10,15 @@ const Header = props => {
   return (
     <>
       <nav>
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-          alt="website logo"
-        />
         <ul>
+          <Link to="/">
+            <li>
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
+                alt="website logo"
+              />
+            </li>
+          </Link>
           <Link to="/">
             <li>Home</li>
           </Link>
@@ -24,7 +28,6 @@ const Header = props => {
           </Link>
         </ul>
         <button type="button" onClick={backToLogin}>
-          {' '}
           Logout
         </button>
       </nav>

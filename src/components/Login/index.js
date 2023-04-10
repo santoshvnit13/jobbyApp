@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
   state = {
@@ -31,11 +32,12 @@ class Login extends Component {
     event.preventDefault()
     const {usernameValue, passwordValue} = this.state
 
-    const userDetails = {usernameValue, passwordValue}
+    const userDetails = {username: usernameValue, password: passwordValue}
     console.log(userDetails)
     const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
+
       body: JSON.stringify(userDetails),
     }
     console.log(options)
@@ -52,7 +54,9 @@ class Login extends Component {
 
   render() {
     const {usernameValue, passwordValue, errorMsg, isLoginFailure} = this.state
-
+    if (Cookies.get('jwt_token') !== undefined) {
+      return <Redirect to="/" />
+    }
     return (
       <>
         <div>

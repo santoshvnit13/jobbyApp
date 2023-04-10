@@ -1,13 +1,9 @@
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 
 import Header from '../Header'
 
-const Home = props => {
-  const goToJobs = () => {
-    const {history} = props
-    history.replace('/jobs')
-  }
+const Home = () => {
   if (Cookies.get('jwt_token') === undefined) {
     return <Redirect to="/login" />
   }
@@ -19,9 +15,10 @@ const Home = props => {
         Millions of people are searching for jobs,salary information,company
         reviews. Find the job that fits your abilities and potential.{' '}
       </p>
-      <button type="button" onClick={goToJobs}>
-        Find Jobs
-      </button>
+      <img src="https://assets.ccbp.in/frontend/react-js/home-lg-bg.png" />
+      <Link to="/jobs">
+        <button type="button">Find Jobs</button>
+      </Link>
     </>
   )
 }
